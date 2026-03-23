@@ -72,9 +72,6 @@ function App() {
   const cameraPlaceholder =
     camera.state === "requesting" ? "requesting camera..." : "camera off";
 
-  // Derive error display
-  const displayError = decart.error || camera.error;
-
   // If auth error, reset key so user can re-enter
   useEffect(() => {
     if (
@@ -139,7 +136,6 @@ function App() {
           sessionState={decart.sessionState}
           seconds={decart.seconds}
           cost={decart.cost}
-          error={displayError}
           onStop={handleStop}
         />
       </div>

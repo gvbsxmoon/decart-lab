@@ -20,7 +20,6 @@ interface SessionStatusProps {
   sessionState: SessionState;
   seconds: number;
   cost: number;
-  error: string | null;
   onStop: () => void;
 }
 
@@ -28,31 +27,23 @@ export function SessionStatus({
   sessionState,
   seconds,
   cost,
-  error,
   onStop,
 }: SessionStatusProps) {
-  if (sessionState === "error" && error) {
-    return (
-      <div className={css.container}>
-        <span className={css.error}>{error}</span>
-      </div>
-    );
-  }
-
   if (sessionState === "idle") return null;
 
   const isConnecting = sessionState === "connecting";
+  const isError = sessionState === "error";
 
   return (
     <div className={css.container}>
       <span className={cn(css.stat, isConnecting && css.connectingText)}>
-        {isConnecting ? "connecting" : formatTime(seconds)}
+        {isConnecting ? "connecting" : isError ? "error" : formatTime(seconds)}
       </span>
       <span className={css.sep}>&middot;</span>
       <span className={css.stat}>{formatCost(cost)}</span>
       <span className={css.sep}>&middot;</span>
       <button className={css.stopBtn} onClick={onStop} type="button">
-        stop
+        {isError ? "reset" : "stop"}
       </button>
     </div>
   );
