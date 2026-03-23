@@ -2,7 +2,7 @@ import { createDecartClient, models } from '@decartai/sdk';
 
 export const LUCY_2_RT = models.realtime('lucy_2_rt');
 export const COST_PER_SECOND = 0.02;
-export const DEFAULT_PROMPT = 'Transform the person to Alan Turing';
+export const DEFAULT_PROMPT = 'Transform the person into a renaissance portrait';
 
 const API_KEY_STORAGE_KEY = 'decart_api_key';
 

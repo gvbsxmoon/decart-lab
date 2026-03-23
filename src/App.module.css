@@ -87,13 +87,6 @@
     right: 0;
     padding: 12px 14px;
     padding-bottom: max(12px, env(safe-area-inset-bottom));
-    background: linear-gradient(
-      transparent,
-      rgba(10, 10, 10, 0.85) 40%,
-      rgba(10, 10, 10, 0.95)
-    );
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     z-index: 10;
   }
 
