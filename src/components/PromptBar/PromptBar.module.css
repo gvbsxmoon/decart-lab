@@ -1,0 +1,184 @@
+.wrapper {
+  width: 100%;
+  max-width: 960px;
+}
+
+/* ── Bar ── */
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 6px 8px;
+  transition: border-color var(--duration) var(--ease),
+    opacity var(--duration) var(--ease),
+    filter var(--duration) var(--ease);
+  animation: slideUp 0.35s var(--ease);
+}
+
+.barFocused {
+  border-color: var(--border-hover);
+}
+
+.barBlocked {
+  opacity: 0.45;
+  pointer-events: none;
+  filter: grayscale(0.3);
+}
+
+/* ── Input ── */
+.input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 20px;
+  padding: 6px 4px;
+  caret-color: var(--text-secondary);
+}
+
+.input::placeholder {
+  color: var(--text-ghost);
+}
+
+/* ── Icon buttons ── */
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: color var(--duration) var(--ease),
+    background var(--duration) var(--ease);
+}
+
+.iconBtn:hover {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.iconBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ── Send button ── */
+.sendBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--text);
+  color: var(--bg);
+  flex-shrink: 0;
+  transition: opacity var(--duration) var(--ease),
+    transform 100ms var(--ease);
+}
+
+.sendBtn:hover {
+  opacity: 0.9;
+}
+
+.sendBtn:active {
+  transform: scale(0.92);
+}
+
+.sendBtn:disabled {
+  opacity: 0.2;
+  cursor: default;
+  transform: none;
+}
+
+/* ── Image pill ── */
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 6px 3px 3px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  max-width: 130px;
+  animation: fadeIn 0.2s var(--ease);
+}
+
+.pillThumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  object-fit: cover;
+  display: block;
+}
+
+.pillName {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pillClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease);
+}
+
+.pillClose:hover {
+  color: var(--text-secondary);
+}
+
+/* ── Spinner ── */
+.spinner {
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── Keyframes ── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .wrapper {
+    max-width: none;
+  }
+}

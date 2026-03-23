@@ -1,0 +1,139 @@
+.panel {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color var(--duration) var(--ease);
+  flex: 1;
+  min-width: 0;
+}
+
+.active {
+  border-color: var(--border-active);
+}
+
+.connecting {
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+/* ── Label ── */
+.label {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Status dot ── */
+.statusDot {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-ghost);
+  transition: all var(--duration) var(--ease);
+}
+
+.dotConnected {
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green-glow);
+}
+
+.dotConnecting {
+  background: var(--yellow);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.dotError {
+  background: var(--red);
+}
+
+/* ── Video ── */
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  animation: fadeIn 0.4s var(--ease) forwards;
+  animation-delay: 0.05s;
+}
+
+.mirror {
+  transform: scaleX(-1);
+}
+
+/* ── Placeholder ── */
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  animation: fadeIn 0.3s var(--ease);
+}
+
+.placeholderText {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-ghost);
+  letter-spacing: 0.03em;
+}
+
+.placeholderPulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.errorText {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--red);
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 0 24px;
+  line-height: 1.6;
+}
+
+/* ── Keyframes (must be in-module so Vite CSS Modules can resolve them) ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: var(--border); }
+  50% { border-color: rgba(255, 255, 255, 0.16); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .panel {
+    aspect-ratio: auto;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}

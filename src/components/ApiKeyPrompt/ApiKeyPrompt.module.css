@@ -1,0 +1,136 @@
+/* ── Keyframes ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.overlay {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--bg);
+	z-index: 100;
+	animation: fadeIn 0.4s var(--ease);
+	padding: 24px;
+}
+
+.card {
+	width: 100%;
+	max-width: 380px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.heading {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.title {
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 18px;
+	letter-spacing: -0.02em;
+	color: var(--text);
+}
+
+.subtitle {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	color: var(--text-muted);
+	line-height: 1.6;
+	letter-spacing: 0.01em;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.inputRow {
+	display: flex;
+	gap: 8px;
+}
+
+.input {
+	flex: 1;
+	min-width: 0;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-md);
+	padding: 10px 14px;
+	font-family: var(--font-mono);
+	font-size: 13px;
+	color: var(--text);
+	outline: none;
+	transition: border-color var(--duration) var(--ease);
+	caret-color: var(--text-secondary);
+}
+
+.input::placeholder {
+	color: var(--text-ghost);
+}
+
+.input:focus {
+	border-color: var(--border-hover);
+}
+
+.submitBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	padding: 0 18px;
+	border-radius: var(--radius-md);
+	border: none;
+	background: var(--text);
+	color: var(--bg);
+	font-family: var(--font-sans);
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	flex-shrink: 0;
+	transition:
+		opacity var(--duration) var(--ease),
+		transform 100ms var(--ease);
+}
+
+.submitBtn:hover {
+	opacity: 0.9;
+}
+
+.submitBtn:active {
+	transform: scale(0.96);
+}
+
+.submitBtn:disabled {
+	opacity: 0.25;
+	cursor: default;
+	transform: none;
+}
+
+.hint {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	color: var(--text-ghost);
+	letter-spacing: 0.02em;
+}
+
+.hintLink {
+	color: var(--text-muted);
+	text-decoration: none;
+	border-bottom: 1px solid var(--border);
+	transition:
+		color var(--duration) var(--ease),
+		border-color var(--duration) var(--ease);
+}
+
+.hintLink:hover {
+	color: var(--text-secondary);
+	border-color: var(--text-muted);
+}
